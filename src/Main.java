@@ -40,7 +40,7 @@ public class Main {
 
             connection = DriverManager.getConnection(DB_URL, USERdeveloper, PASSWORD);
 
-            System.out.println("Connessione avvenuta con successo");
+            System.out.println("Connection successful");
 
             //da qui in poi non viene spiegato da nessuna parte
             Statement statement = connection.createStatement();
@@ -54,18 +54,22 @@ public class Main {
 
             statement.executeUpdate(studentsTable);
 
-            String insertStudent1= "INSERT INTO `newdb`.`students` (`last_name`, `first_name`) VALUES ('Rossi', 'Maro');";
-            String insertStudent2= "INSERT INTO `newdb`.`students` (`last_name`, `first_name`) VALUES ('Verdi', 'Sara');";
-            String insertStudent3= "INSERT INTO `newdb`.`students` (`last_name`, `first_name`) VALUES ('Bianchi', 'Maria');";
-            String insertStudent4= "INSERT INTO `newdb`.`students` (`last_name`, `first_name`) VALUES ('Neri', 'Francesco');";
+            System.out.println("Table created");
+
+            String insertStudent1= "INSERT INTO students (last_name, first_name) VALUES ('Rossi', 'Maro');";
+            String insertStudent2= "INSERT INTO students (last_name, first_name) VALUES ('Verdi', 'Sara');";
+            String insertStudent3= "INSERT INTO students (last_name, first_name) VALUES ('Bianchi', 'Maria');";
+            String insertStudent4= "INSERT INTO students (last_name, first_name) VALUES ('Neri', 'Francesco');";
 
             statement.executeUpdate(insertStudent1);
             statement.executeUpdate(insertStudent2);
             statement.executeUpdate(insertStudent3);
             statement.executeUpdate(insertStudent4);
 
+            System.out.println("Added students");
+
         } catch (SQLException e) {
-            System.out.println("IMPOSSIBILE CONNETTERSI AL DB");
+            System.out.println("CANNOT CONNECT TO THE DB OR MODIFY IT");
             throw new RuntimeException(e);
         } finally {
             try {
